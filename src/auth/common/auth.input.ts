@@ -41,6 +41,12 @@ export class SignUpInput {
   confirmPassword: string;
   @Field((_) => GraphQLISODateTime)
   birthDate: Date;
+  @Field((_) => String)
+  @IsString()
+  @IsNotEmpty()
+  @MaxLength(20)
+  @MinLength(5)
+  githubUsername: string;
 
   @Matches(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/)
   @Field((_) => String)
