@@ -1,8 +1,11 @@
-import { Field } from '@nestjs/graphql';
-import { Prop } from '@nestjs/mongoose';
+import { Field, ObjectType } from '@nestjs/graphql';
+import { Prop, Schema } from '@nestjs/mongoose';
 import { TypeSystemDefinitionNode } from 'graphql';
 import { Types } from 'mongoose';
 import { User } from 'src/auth/common/user.class';
+import { projectstatusEnum } from './statusEnum';
+@ObjectType()
+@Schema()
 export class Project {
   @Prop()
   @Field()
@@ -20,4 +23,9 @@ export class Project {
   })
   @Field((_) => String)
   owner: Types.ObjectId;
+  @Prop({
+    default: projectstatusEnum.open
+  })
+  @Field((_) => String)
+  status: projectstatusEnum;
 }

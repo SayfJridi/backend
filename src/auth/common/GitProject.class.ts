@@ -7,8 +7,6 @@ export class GitProject {
     httpsClone:string; 
     @Field(_ => String )
     link:string
-    @Field(_ => String )
-    language:string
 
 
 }
